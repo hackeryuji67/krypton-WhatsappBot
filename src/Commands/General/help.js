@@ -51,11 +51,11 @@ module.exports.execute = async (client, flag, arg, M) => {
                 obj[item.command.category].push(item.command.name)
             }
         })
-        let base = `⛩️ *❯─「Kɾყρƚσɳ」─❮* ⛩️
+        let base = `⛩️ *❯─「ᎯᎿᎻᎬᏁᎯ」─❮* ⛩️
 
 👋 *Hi ${M.pushName}* 🍃!
         
-🎋 *Support us by following us on instagram:* https://www.instagram.com/das_abae
+🎋 *Visit our Website: coming soon....* 
         
 This help menu is designed to help you get started with the bot.`
         base += '\n\n ⟾ *📪Command list📪*'
