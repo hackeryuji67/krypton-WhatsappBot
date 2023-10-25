@@ -35,6 +35,11 @@ const list = [
         emoji: '⚙️'
     },
     {
+        id:'economy',
+        font:'ЄƇƠƝMƳ',
+        emoji:'💳'
+    },
+    {
         id: 'weeb',
         font: 'WҽҽႦ',
         emoji: '🎐'
@@ -53,12 +58,12 @@ module.exports.execute = async (client, flag, arg, M) => {
         })
         let base = `⛩️ *❯─「ᎯᎿᎻᎬᏁᎯ」─❮* ⛩️
 
-👋 *Hi ${M.pushName}* 🍃!
+👋 *Hello ${M.pushName}* I'm ${client.config.name} of Athena🤍!
         
 🎋 *Visit our Website: coming soon....* 
         
 This help menu is designed to help you get started with the bot.`
-        base += '\n\n ⟾ *📪Command list📪*'
+        base += '\n\n ⟾ *🎁ＣＯＭＭＡＮＤ ＬＩＳＴ🎁*'
         const keys = Object.keys(obj).filter((c) => c !== 'dev')
         for (const key of keys) {
             const data = list.find((x) => x.id.toLowerCase() === key.toLocaleLowerCase())
@@ -85,15 +90,15 @@ This help menu is designed to help you get started with the bot.`
     const command =
         client.cmd.get(arg)?.command ??
         client.cmd.find((cmd) => cmd.command.aliases && cmd.command.aliases.includes(arg))?.command
-    if (!command) return M.reply('🟥 *Command does not exsist*')
+    if (!command) return M.reply('🚧 *Command does not exsist*')
     M.reply(
-        `*🟥 Name:* ${command.name}\n*⬜ Exp:* ${command.exp}\n*🟧 Admin:* ${
+        `*🎗 Name:* ${command.name}\n*🌟 Exp:* ${command.exp}\n*👑 Admin:* ${
             command.category == 'moderation' ? 'Required' : 'Not_Required'
-        }\n*🟪 Category:* ${command.category} ${
+        }\n*⚙️ Category:* ${command.category} ${
             list.find((x) => x.id.toLowerCase() === command.category.toLocaleLowerCase()).emoji
-        }\n*🟩 Aliases:* ${command.aliases.join(', ')}\n*🟦 Usage:* ${client.config.prefix}${command.name} ${
+        }\n*🚦 Aliases:* ${command.aliases.join(', ')}\n*💡 Usage:* ${client.config.prefix}${command.name} ${
             command.usage
-        }\n*🟨 Desc:* ${command.description}`
+        }\n*📕 Desc:* ${command.description}`
     )
 }
 
