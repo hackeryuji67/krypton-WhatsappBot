@@ -25,6 +25,7 @@ module.exports = MessageHandler = async (messages, client) => {
         const ActivateMod = (await client.DB.get('mod')) || []
         const ActivateChatBot = (await client.DB.get('chatbot')) || []
         const banned = (await client.DB.get('banned')) || []
+        const economy = (await client.DB.get('economy')) || []
 
         //Antilink
         await antilink(client, M, groupAdmins, ActivateMod, isGroup, sender, body, from)
@@ -50,18 +51,18 @@ module.exports = MessageHandler = async (messages, client) => {
             client.cmd.get(cmdName) ||
             client.cmd.find((cmd) => cmd.command.aliases && cmd.command.aliases.includes(cmdName))
 
-        if (!command) return M.reply(`💔 *No such command found!!*`)
+        if (!command) return M.reply(`🚧 *No such command found!!*`)
         if (!groupAdmins.includes(sender) && command.command.category == 'moderation')
             return M.reply('🟨 *User Missing Admin Permission*')
         if (
             !groupAdmins.includes(client.user.id.split(':')[0] + '@s.whatsapp.net') &&
             command.command.category == 'moderation'
         )
-            return M.reply('💔 *Missing admin permission. Try promoting me to admin and try again.*')
+            return M.reply('💡 *Missing admin permission. Try promoting me to admin and try again.*')
         if (!isGroup && command.command.category == 'moderation')
-            return M.reply('🟨 *This command and its aliases can only be used in a group chat*')
+            return M.reply('⚙️ *This command and its aliases can only be used in a group chat*')
         if (!client.config.mods.includes(sender.split('@')[0]) && command.command.category == 'dev')
-            return M.reply('📛 *This command only can be accessed by the mods*')
+            return M.reply('🚧 *This command only can be accessed by the mods*')
         command.execute(client, flag, arg, M)
 
         //Experiance
@@ -87,7 +88,7 @@ const antilink = async (client, M, groupAdmins, ActivateMod, isGroup, sender, bo
             if (groupCode !== groupNow) {
                 await client.sendMessage(from, { delete: M.key })
                 return await client.groupParticipantsUpdate(from, [sender], 'remove')
-                M.reply('❤ *Successfully removed an intruder!!!!*')
+                M.reply('✅️ *Successfully removed an intruder!!!!*')
             }
         }
     }
